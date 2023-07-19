@@ -1,0 +1,34 @@
+name: Metrics
+on:
+  # 🌏 Think about the planet! No need to update stats too frequently
+  schedule: [{cron: "0 0 */7 * *"}]
+  # 💡 The following line lets you run workflow manually from the action tab!
+  workflow_dispatch:
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DSAlgo
+        uses: lowlighter/metrics@latest
+        with:
+          template: repository
+          filename: metrics.DSAlo.svg
+          token: ${{ secrets.METRICS_TOKEN_WITH_SCOPES }}
+          user: SamirPaul1
+          repo: DSAlgo
+          plugin_lines: yes
+          plugin_followup: yes
+          
+      - name: LeetCode
+        uses: lowlighter/metrics@latest
+        with:
+          template: repository
+          filename: metrics.LeetCode.svg
+          token: ${{ secrets.METRICS_TOKEN_WITH_SCOPES }}
+          user: SamirPaul1
+          repo: LeetCode
+          plugin_lines: yes
+          plugin_followup: yes
+
+
+      
